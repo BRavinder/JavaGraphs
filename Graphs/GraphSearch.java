@@ -1,7 +1,6 @@
-package graphs;
-
+import java.util.*;
 import java.util.ArrayList;
-import java.util.Iterattor;
+import java.util.Iterator;
 
 public class GraphSearch {
     int V;
@@ -21,11 +20,12 @@ public class GraphSearch {
         boolean[] visited = new boolean[V];
         ArrayList<Integer> a1 = new ArrayList<Integer>();
         visited[sourcevertex]= true;
+        a1.add(sourcevertex);
         while(!a1.isEmpty()) {
             sourcevertex = a1.remove(0);
             System.out.print(sourcevertex+" ");
-            Iterator i = adj[sorcevertex].iterator();
-            while(i,hasNet()) {
+            Iterator i = adj[sourcevertex].iterator();
+            while(i.hasNext()) {
                 int n = (int) i.next();
                 if(!visited[n]) {
                     visited[n] = true;
@@ -36,7 +36,7 @@ public class GraphSearch {
         }
     }
     public static void main(String[] args){
-        GraphSerarch g1 = new GraphSerarch(6);
+        GraphSearch g1 = new GraphSearch(6);
         g1.edge(0,1);
         g1.edge(0,2);
         g1.edge(0,5);
@@ -51,7 +51,6 @@ public class GraphSearch {
         g1.edge(4,5);
         g1.edge(5,0);
         g1.edge(5,4);
-       
-       g1.breathFirstSearch(0);
+        g1.breathFirstSearch(0);
     }
 }
